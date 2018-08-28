@@ -21,7 +21,7 @@ you merge develop into master. The version number is modified everytime you
 commit or merge in the **develop** branch.
 
 
-## A 4 numbers version number
+## A 4-number version number
 
 I propose a user oriented version number. This number should reflect the
 changes in the software. It's not (really) a release version number.

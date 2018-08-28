@@ -1,4 +1,4 @@
-0.3.1.0
+0.3.1.1
 [0.1.0.0]
 Add commit-msg
 [0.2.0.0]
@@ -7,3 +7,5 @@ Adds post-commit
 Adds post-merge
 [0.3.1.0]
 A disappointing README
+[0.3.1.1]
+english is my city
