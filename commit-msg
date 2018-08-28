@@ -1,0 +1,67 @@
+#!/bin/bash
+
+branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [ "$branch_name" != "develop" ]; then
+  exit 0
+fi
+
+# Allows us to read user input below, assigns stdin to keyboard
+exec < /dev/tty
+
+echo "---[VERSION NUMBER POLICE]---"
+
+# path to the version-number file
+path="$(git rev-parse --show-toplevel)/.sovenut.version-number"
+# check if file exists
+if [ -f $path ]; then
+  # clean the file in case a user aborted a commit
+  git checkout -- "$path"
+else # file doesn't exist
+  echo "0.0.0.0" > "$path"
+fi
+# Get version number
+version_number=$(head -n 1 "$path")
+# Get M, f, m, and p numbers
+Major=$(cut -d'.' -f1 <<<$version_number)
+feature=$(cut -d'.' -f2 <<<$version_number)
+minor=$(cut -d'.' -f3 <<<$version_number)
+patch=$(cut -d'.' -f4 <<<$version_number)
+
+# ask for the type of change
+notDone=true;
+while $notDone; do
+  notDone=false
+  echo -n "Enter type of change: Major(M), feature(f), minor(m), patch(p): "
+  read ans
+
+  if [ "$ans" = "M" ] || [ "$ans" = "Major" ]; then
+    ((Major++))
+    feature=0
+    minor=0
+    patch=0
+  elif [ "$ans" = "f" ] || [ "$ans" = "feature" ]; then
+    ((feature++))
+    minor=0
+    patch=0
+  elif [ "$ans" = "m" ] || [ "$ans" = "minor" ]; then
+    ((minor++))
+    patch=0
+  elif [ "$ans" = "p" ] || [ "$ans" = "patch" ]; then
+    ((patch++))
+  else
+    notDone=true
+  fi
+done
+
+# first line of commit message will be the changelog
+changelog=$(head -n 1 "$1")
+# build new version number
+version_number="$Major.$feature.$minor.$patch"
+# replace version number in the file
+sed -i "1s/.*/$version_number/" "$path"
+
+#add content of the first line of the commit msg to the "changelog" version-number
+echo "[$version_number]" >> "$path"
+echo $changelog >> "$path"
+touch .stupidestcommithook
+git add "$path"
