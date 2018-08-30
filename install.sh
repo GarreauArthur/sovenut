@@ -11,6 +11,6 @@ cd sovenut # delete this line
 git checkout f/install # delete this line
 cd .. # delete this line
 
-mv -t "$git_dir" ./sovenut/hooks/* # copy all script to .git/hooks/
+mv -t "$git_dir/hooks/" ./sovenut/hooks/* # copy all script to .git/hooks/
 rm -rf sovenut                     # delete the repo
 
