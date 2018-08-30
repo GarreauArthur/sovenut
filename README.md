@@ -54,7 +54,8 @@ or
 
 Copy paste in your terminal
 
-    curl url/install.sh && chmod +x install.sh && ./install.sh
+    curl https://raw.githubusercontent.com/GarreauArthur/sovenut/f/install/install.sh -o sovenut_install.sh \
+    && chmod +x sovenut_install.sh && bash ./sovenut_install.sh && rm ./sovenut_install.sh
 
 Done !
 

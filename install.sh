@@ -8,7 +8,7 @@ git_dir=$(git rev-parse --git-dir) # get path to .git
 git clone https://github.com/GarreauArthur/sovenut.git
 
 cd sovenut # delete this line
-git checkout develop # delete this line
+git checkout f/install # delete this line
 cd .. # delete this line
 
 mv -t "$git_dir" ./sovenut/hooks/* # copy all script to .git/hooks/
