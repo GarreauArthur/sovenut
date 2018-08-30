@@ -1,4 +1,4 @@
-0.3.1.1
+0.4.0.0
 [0.1.0.0]
 Add commit-msg
 [0.2.0.0]
@@ -9,3 +9,5 @@ Adds post-merge
 A disappointing README
 [0.3.1.1]
 english is my city
+[0.4.0.0]
+Adds pre-commit to forbid commiting to master
