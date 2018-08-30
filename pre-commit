@@ -1,0 +1,8 @@
+#!/bin/bash
+
+branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+if [ "$branch_name" = "master" ]; then
+  echo "[!!!COMMIT POLICE!!!] YOU CAN'T COMMIT TO MASTER"
+  exit 1
+fi
+
