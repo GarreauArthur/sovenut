@@ -2,7 +2,7 @@
 
 set -o errexit                     # stop the execution if an error occurs
 
-git -v                             # check if git is install
+git --version                      # check if git is install
 git_dir=$(git rev-parse --git-dir) # get path to .git
                                    # clone the repo
 git clone https://github.com/GarreauArthur/sovenut.git
