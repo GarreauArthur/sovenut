@@ -1,4 +1,4 @@
-0.5.0.0
+0.5.0.1
 [0.1.0.0]
 Add commit-msg
 [0.2.0.0]
@@ -13,3 +13,5 @@ english is my city
 Adds pre-commit to forbid commiting to master
 [0.5.0.0]
 Adds the install script
+[0.5.0.1]
+Production ready install script
