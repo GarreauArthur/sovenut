@@ -2,27 +2,29 @@
 
 # check branch name
 branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-if [ "$branch_name" != "develop" ]; then
-  exit 0
-fi
-
-# check if this stupid file is here
-if [ ! -f .stupidestcommithook ]; then
-  exit 0
-fi
-rm .stupidestcommithook 
-
-# Allows us to read user input below, assigns stdin to keyboard
-exec < /dev/tty
-
-# looks like a terrible idea, but I also like to live dangerously
-rm "$(git rev-parse --show-toplevel)/.git/MERGE_HEAD"
-
-git commit --amend --no-edit --no-verify
-
 # path to the version-number file
 path="$(git rev-parse --show-toplevel)/.sovenut.version-number"
 version_number=$(head -n 1 $path)
-git tag $version_number
-echo "---TAG ADDED---"
 
+if [ "$branch_name" = "develop" ]; then
+
+  # check if this stupid file is here
+  if [ ! -f .stupidestcommithook ]; then
+    exit 0
+  fi
+  rm .stupidestcommithook 
+
+  # looks like a terrible idea, but I also like to live dangerously
+  rm "$(git rev-parse --show-toplevel)/.git/MERGE_HEAD"
+
+  git commit --amend --no-edit --no-verify
+
+  git tag $version_number
+  echo "---TAG ADDED---"
+
+elif [ "$branch_name" = "master" ]; then
+
+  git tag "release-$version_number"
+  echo "---TAG ADDED---"
+
+fi
