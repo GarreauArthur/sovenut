@@ -48,13 +48,14 @@ or
 
 ### Prerequisites
 
-    git >= v2.15.2 (tested with 2.18.0)
+* git >= v2.15.2 (tested with 2.18.0)
+* An existing git repo
 
 ### Install
 
-Copy paste in your terminal
+Go into your project directory and copy-paste in your terminal:
 
-    curl https://raw.githubusercontent.com/GarreauArthur/sovenut/f/install/install.sh -o sovenut_install.sh \
+    curl https://raw.githubusercontent.com/GarreauArthur/sovenut/master/install.sh -o sovenut_install.sh \
     && chmod +x sovenut_install.sh && bash ./sovenut_install.sh && rm ./sovenut_install.sh
 
 Done !
