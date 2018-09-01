@@ -1,4 +1,4 @@
-0.6.1.0
+0.6.1.1
 [0.1.0.0]
 Add commit-msg
 [0.2.0.0]
@@ -19,3 +19,5 @@ Production ready install script
 Add a release tag when we merge to master
 [0.6.1.0]
 Adds basic test scripts
+[0.6.1.1]
+Fixes #11 (link to the wrong installation script)
