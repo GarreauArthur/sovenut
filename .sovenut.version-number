@@ -1,4 +1,4 @@
-0.6.1.1
+0.6.1.2
 [0.1.0.0]
 Add commit-msg
 [0.2.0.0]
@@ -21,3 +21,5 @@ Add a release tag when we merge to master
 Adds basic test scripts
 [0.6.1.1]
 Fixes #11 (link to the wrong installation script)
+[0.6.1.2]
+forgot to create the file to store the version number
